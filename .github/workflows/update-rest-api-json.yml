@@ -13,10 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Download artifacts
-        uses: ./.github/download-artifacts
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
         with:
-          version: 8.0-SNAPSHOT
+          node-version: 14.x
+
+      - name: Install deps
+        run: |
+          npm run lint --prefix .github/download-artifacts
+
+      - name: Download artifacts
+        run: |
+          node .github/download-artifacts/index.js
 
       - name: Test 1
         run: |
