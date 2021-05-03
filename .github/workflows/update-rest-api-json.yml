@@ -30,16 +30,6 @@ jobs:
         run: |
           git status --porcelain
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: 'Update rest-api-spec'
-          body: 'As titled.'
-          commit-message: 'Update rest-api-spec'
-          delete-branch: true
-          branch-suffix: timestamp
-          # team-reviewers: elastic/clients-team
-
       - name: Install specification deps
         run: |
           npm install --prefix compiler
@@ -49,3 +39,13 @@ jobs:
         run: |
           npm run generate-schema --prefix compiler
           npm run start --prefix typescript-generator
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Update rest-api-spec'
+          body: 'As titled.'
+          commit-message: 'Update rest-api-spec'
+          delete-branch: true
+          branch-suffix: timestamp
+          # team-reviewers: elastic/clients-team
