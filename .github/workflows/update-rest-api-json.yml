@@ -34,5 +34,16 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: 'Update rest-api-spec'
+          body: 'As titled.'
           commit-message: 'Update rest-api-spec'
           # team-reviewers: elastic/clients-team
+
+      - name: Install specification deps
+        run: |
+          npm install --prefix compiler
+          npm install --prefix typescript-generator
+
+      - name: Generate output
+        run: |
+          npm run generate-schema --prefix compiler
+          npm run start --prefix typescript-generator
