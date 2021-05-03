@@ -36,6 +36,8 @@ jobs:
           title: 'Update rest-api-spec'
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
+          delete-branch: true
+          branch-suffix: timestamp
           # team-reviewers: elastic/clients-team
 
       - name: Install specification deps
