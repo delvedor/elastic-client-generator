@@ -20,7 +20,7 @@ jobs:
 
       - name: Install deps
         run: |
-          npm run lint --prefix .github/download-artifacts
+          npm install --prefix .github/download-artifacts
 
       - name: Download artifacts
         run: |
