@@ -32,3 +32,7 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Update rest-api-spec'
+          commit-message: 'Update rest-api-spec'
+          # team-reviewers: elastic/clients-team
