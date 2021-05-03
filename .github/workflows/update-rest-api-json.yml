@@ -26,14 +26,9 @@ jobs:
         run: |
           node .github/download-artifacts/index.js --version 8.0-SNAPSHOT
 
-      - name: Test 1
-        run: |
-          ls -al artifacts
-
-      - name: Test 2
-        run: |
-          ls -al specification/_json_spec
-
-      - name: Test 3
+      - name: Debug git status
         run: |
           git status --porcelain
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
