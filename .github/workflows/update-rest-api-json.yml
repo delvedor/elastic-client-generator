@@ -37,8 +37,7 @@ jobs:
 
       - name: Generate output
         run: |
-          npm run generate-schema --prefix compiler
-          npm run start --prefix typescript-generator
+          make contrib
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -47,5 +46,4 @@ jobs:
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
           delete-branch: true
-          branch-suffix: timestamp
           # team-reviewers: elastic/clients-team
