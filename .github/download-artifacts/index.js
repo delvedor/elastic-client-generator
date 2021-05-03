@@ -21,6 +21,7 @@
 
 const core = require('@actions/core')
 const { join } = require('path')
+const minimist = require('minimist')
 const stream = require('stream')
 const { promisify } = require('util')
 const { createWriteStream, promises } = require('fs')
@@ -137,7 +138,10 @@ async function main (options) {
   await downloadArtifacts(options)
 }
 
-main({ version: core.getInput('version') }).catch(t => {
+const options = minimist(process.argv.slice(2), {
+  string: ['id', 'version', 'hash']
+})
+main(options).catch(t => {
   core.error(t)
   process.exit(1)
 })

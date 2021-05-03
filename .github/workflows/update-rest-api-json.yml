@@ -24,7 +24,7 @@ jobs:
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js
+          node .github/download-artifacts/index.js --version 8.0-SNAPSHOT
 
       - name: Test 1
         run: |
