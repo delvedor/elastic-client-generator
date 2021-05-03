@@ -61,6 +61,7 @@ async function downloadArtifacts (opts) {
   await rm(esFolder)
   await rm(specFolder)
   await mkdir(esFolder, { recursive: true })
+  await mkdir(specFolder, { recursive: true })
 
   core.info('Downloading artifacts')
   const response = await fetch(resolved.url)
@@ -79,6 +80,7 @@ async function downloadArtifacts (opts) {
   core.info('Moving files')
   const files = await readdir(downloadedSpec)
   for (const file of files) {
+    if (file === '_common.json') continue
     await rename(join(downloadedSpec, file), join(specFolder, file))
   }
 
